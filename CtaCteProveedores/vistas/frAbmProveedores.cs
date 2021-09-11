@@ -106,6 +106,10 @@ namespace CtaCteProveedores.Proveedores
         {
             string Cuit = "";
             Cuit = txBuscar.Text;
+
+            ctrProveedores objprueba = new ctrProveedores();
+            objprueba.DevolverId(Cuit);
+            return;
             MySqlDataReader reader = null;
 
             string sql = "SELECT idproveedor, RazonSocial, NombreFantacia, Cuit, Provincia, "+

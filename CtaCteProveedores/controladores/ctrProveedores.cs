@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CtaCteProveedores.Proveedores
 {
     class ctrProveedores:Conexion
     {
+        private string sqlcons = "";
+
         public List<Object> consulta(string dato)
         {
             MySqlDataReader redear;
@@ -56,5 +59,46 @@ namespace CtaCteProveedores.Proveedores
             }
             return listaProveedor;
         }
+    
+    //Devolver Id desde Cuit
+    public int DevolverId(string cuit)
+        {
+            int salida = 0;
+            MySqlDataReader redear;
+            if (String.IsNullOrEmpty(cuit))
+            {//error no paso ningun cuit
+                MessageBox.Show("No ingreso cuit  ");
+                return -1;
+            }
+            sqlcons = "SELECT idproveedor FROM proveedores WHERE Cuit='" + cuit + "'  LIMIT 1; ";
+
+            MySqlConnection conexionBD = base.conexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sqlcons, conexionBD);
+                redear = comando.ExecuteReader();
+                if (redear.HasRows)
+                {
+                    salida=int.Parse( redear.GetString("idproveedor"));
+                }
+                else
+                {
+                    salida = 0;
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                salida = -2;
+                Console.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+            return salida;
+        }
+    
     }
 }
