@@ -33,11 +33,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.svg.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
@@ -90,6 +123,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\ClaseComras.cs" />
+    <Compile Include="clases\ClaseProvPagos.cs" />
+    <Compile Include="controladores\ClaseAuxiliar.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="frMain.cs">
       <SubType>Form</SubType>
@@ -100,6 +136,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controladores\ctrProveedores.cs" />
+    <Compile Include="VistasAuxiliares\frBuscarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistasAuxiliares\frBuscarPersona.Designer.cs">
+      <DependentUpon>frBuscarPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistasAuxiliares\frCargarImagenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistasAuxiliares\frCargarImagenes.Designer.cs">
+      <DependentUpon>frCargarImagenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\frAbmProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +155,36 @@
       <DependentUpon>frAbmProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="clases\ClaseProveedores.cs" />
+    <Compile Include="vistas\frConsultaCtaCteProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\frConsultaCtaCteProv.Designer.cs">
+      <DependentUpon>frConsultaCtaCteProv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\frCtrCompras.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="vistas\frCtrCompras.Designer.cs">
+      <DependentUpon>frCtrCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\frCtrEgresos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="vistas\frCtrEgresos.Designer.cs">
+      <DependentUpon>frCtrEgresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\frCtrIngresos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="vistas\frCtrIngresos.Designer.cs">
+      <DependentUpon>frCtrIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\frCtrPagosProveedor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="vistas\frCtrPagosProveedor.Designer.cs">
+      <DependentUpon>frCtrPagosProveedor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frMain.resx">
       <DependentUpon>frMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,9 +196,28 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VistasAuxiliares\frBuscarPersona.resx">
+      <DependentUpon>frBuscarPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistasAuxiliares\frCargarImagenes.resx">
+      <DependentUpon>frCargarImagenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\frAbmProveedores.resx">
       <DependentUpon>frAbmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\frConsultaCtaCteProv.resx">
+      <DependentUpon>frConsultaCtaCteProv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\frCtrCompras.resx">
+      <DependentUpon>frCtrCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\frCtrEgresos.resx">
+      <DependentUpon>frCtrEgresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\frCtrIngresos.resx">
+      <DependentUpon>frCtrIngresos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CtaCteProveedores.Proveedores.ClaseProveedores.datasource" />
@@ -137,6 +234,53 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuentas-corrientes-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuentas-corrientes-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar-el-archivo %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar-el-archivo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\escritura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salida %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Go forward.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

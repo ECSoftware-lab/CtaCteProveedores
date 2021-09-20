@@ -30,13 +30,32 @@ namespace CtaCteProveedores.Proveedores
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frAbmProveedores));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.laIdProveedor = new System.Windows.Forms.Label();
+            this.txBuscar = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btSalir = new System.Windows.Forms.Button();
-            this.btEliminar = new System.Windows.Forms.Button();
-            this.btModificar = new System.Windows.Forms.Button();
-            this.btAgregar = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dtgProveedores = new System.Windows.Forms.DataGridView();
+            this.NProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.claseProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.laRespAlta = new System.Windows.Forms.Label();
+            this.lbFechaAlta = new System.Windows.Forms.Label();
             this.chActivo = new System.Windows.Forms.CheckBox();
             this.txEmail = new System.Windows.Forms.TextBox();
             this.txCelular = new System.Windows.Forms.TextBox();
@@ -54,96 +73,231 @@ namespace CtaCteProveedores.Proveedores
             this.label2 = new System.Windows.Forms.Label();
             this.txRazonSocial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txBuscar = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lbFechaAlta = new System.Windows.Forms.Label();
-            this.laRespAlta = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.laIdProveedor = new System.Windows.Forms.Label();
-            this.dtgProveedores = new System.Windows.Forms.DataGridView();
-            this.claseProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idproveedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razonSocial1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaAlta1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.celularDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btEliminar = new System.Windows.Forms.Button();
+            this.btAgregar = new System.Windows.Forms.Button();
+            this.btSalir = new System.Windows.Forms.Button();
+            this.btModificar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.claseProveedoresBindingSource)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(92)))), ((int)(((byte)(107)))));
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.laIdProveedor);
+            this.panel1.Controls.Add(this.txBuscar);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.txBuscar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(909, 60);
             this.panel1.TabIndex = 0;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(332, 21);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Buscar RazonSocial o CUIT";
+            // 
+            // laIdProveedor
+            // 
+            this.laIdProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.laIdProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laIdProveedor.Location = new System.Drawing.Point(97, 12);
+            this.laIdProveedor.Name = "laIdProveedor";
+            this.laIdProveedor.Size = new System.Drawing.Size(75, 29);
+            this.laIdProveedor.TabIndex = 20;
+            // 
+            // txBuscar
+            // 
+            this.txBuscar.Location = new System.Drawing.Point(478, 18);
+            this.txBuscar.Name = "txBuscar";
+            this.txBuscar.Size = new System.Drawing.Size(189, 20);
+            this.txBuscar.TabIndex = 0;
+            this.txBuscar.TextChanged += new System.EventHandler(this.txBuscar_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "N Proveedor";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(734, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btSalir);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(92)))), ((int)(((byte)(107)))));
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.panel8);
+            this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.btEliminar);
-            this.panel3.Controls.Add(this.btModificar);
+            this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.btAgregar);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.btSalir);
+            this.panel3.Controls.Add(this.btModificar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 386);
             this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(20, 2, 10, 2);
             this.panel3.Size = new System.Drawing.Size(909, 64);
             this.panel3.TabIndex = 2;
             // 
-            // btSalir
+            // imageList1
             // 
-            this.btSalir.Location = new System.Drawing.Point(776, 26);
-            this.btSalir.Name = "btSalir";
-            this.btSalir.Size = new System.Drawing.Size(75, 23);
-            this.btSalir.TabIndex = 3;
-            this.btSalir.Text = "Salir";
-            this.btSalir.UseVisualStyleBackColor = true;
-            this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "user.png");
+            this.imageList1.Images.SetKeyName(1, "user_add.png");
+            this.imageList1.Images.SetKeyName(2, "user_delete.png");
+            this.imageList1.Images.SetKeyName(3, "user_edit.png");
+            this.imageList1.Images.SetKeyName(4, "user_go.png");
+            this.imageList1.Images.SetKeyName(5, "door_out.png");
+            this.imageList1.Images.SetKeyName(6, "images.png");
             // 
-            // btEliminar
+            // panel8
             // 
-            this.btEliminar.Location = new System.Drawing.Point(348, 19);
-            this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btEliminar.TabIndex = 2;
-            this.btEliminar.Text = "Eliminar";
-            this.btEliminar.UseVisualStyleBackColor = true;
-            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(335, 2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(42, 60);
+            this.panel8.TabIndex = 11;
             // 
-            // btModificar
+            // panel7
             // 
-            this.btModificar.Location = new System.Drawing.Point(238, 16);
-            this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 23);
-            this.btModificar.TabIndex = 1;
-            this.btModificar.Text = "Modificar";
-            this.btModificar.UseVisualStyleBackColor = true;
-            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(782, 2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(42, 60);
+            this.panel7.TabIndex = 10;
             // 
-            // btAgregar
+            // panel6
             // 
-            this.btAgregar.Location = new System.Drawing.Point(123, 13);
-            this.btAgregar.Name = "btAgregar";
-            this.btAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btAgregar.TabIndex = 0;
-            this.btAgregar.Text = "Agregar";
-            this.btAgregar.UseVisualStyleBackColor = true;
-            this.btAgregar.Click += new System.EventHandler(this.btAgregar_Click);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(218, 2);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(42, 60);
+            this.panel6.TabIndex = 8;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(95, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(42, 60);
+            this.panel5.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dtgProveedores);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(228, 60);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(681, 326);
+            this.panel4.TabIndex = 4;
+            // 
+            // dtgProveedores
+            // 
+            this.dtgProveedores.AllowUserToAddRows = false;
+            this.dtgProveedores.AllowUserToDeleteRows = false;
+            this.dtgProveedores.AutoGenerateColumns = false;
+            this.dtgProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NProveedor,
+            this.RazonSocial,
+            this.Cuit,
+            this.fechaAlta,
+            this.Telefono,
+            this.Celular,
+            this.Email});
+            this.dtgProveedores.DataSource = this.claseProveedoresBindingSource;
+            this.dtgProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgProveedores.Location = new System.Drawing.Point(0, 0);
+            this.dtgProveedores.Name = "dtgProveedores";
+            this.dtgProveedores.ReadOnly = true;
+            this.dtgProveedores.Size = new System.Drawing.Size(681, 326);
+            this.dtgProveedores.TabIndex = 0;
+            // 
+            // NProveedor
+            // 
+            this.NProveedor.DataPropertyName = "Idproveedor";
+            this.NProveedor.HeaderText = "N Proveedor";
+            this.NProveedor.Name = "NProveedor";
+            this.NProveedor.ReadOnly = true;
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.DataPropertyName = "RazonSocial1";
+            this.RazonSocial.HeaderText = "Razon Social";
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.ReadOnly = true;
+            // 
+            // Cuit
+            // 
+            this.Cuit.DataPropertyName = "Cuit";
+            this.Cuit.HeaderText = "Cuit";
+            this.Cuit.Name = "Cuit";
+            this.Cuit.ReadOnly = true;
+            // 
+            // fechaAlta
+            // 
+            this.fechaAlta.DataPropertyName = "FechaAlta1";
+            this.fechaAlta.HeaderText = "Fecha Alta";
+            this.fechaAlta.Name = "fechaAlta";
+            this.fechaAlta.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Celular";
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // claseProveedoresBindingSource
+            // 
+            this.claseProveedoresBindingSource.DataSource = typeof(CtaCteProveedores.Proveedores.ClaseProveedores);
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::CtaCteProveedores.Properties.Resources.back;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.laRespAlta);
             this.panel2.Controls.Add(this.lbFechaAlta);
             this.panel2.Controls.Add(this.chActivo);
@@ -169,6 +323,24 @@ namespace CtaCteProveedores.Proveedores
             this.panel2.Size = new System.Drawing.Size(228, 326);
             this.panel2.TabIndex = 3;
             // 
+            // laRespAlta
+            // 
+            this.laRespAlta.AutoSize = true;
+            this.laRespAlta.Location = new System.Drawing.Point(12, 300);
+            this.laRespAlta.Name = "laRespAlta";
+            this.laRespAlta.Size = new System.Drawing.Size(50, 13);
+            this.laRespAlta.TabIndex = 18;
+            this.laRespAlta.Text = "Res. Alta";
+            // 
+            // lbFechaAlta
+            // 
+            this.lbFechaAlta.AutoSize = true;
+            this.lbFechaAlta.Location = new System.Drawing.Point(12, 275);
+            this.lbFechaAlta.Name = "lbFechaAlta";
+            this.lbFechaAlta.Size = new System.Drawing.Size(55, 13);
+            this.lbFechaAlta.TabIndex = 17;
+            this.lbFechaAlta.Text = "FechaAlta";
+            // 
             // chActivo
             // 
             this.chActivo.AutoSize = true;
@@ -184,6 +356,7 @@ namespace CtaCteProveedores.Proveedores
             // txEmail
             // 
             this.txEmail.Location = new System.Drawing.Point(95, 230);
+            this.txEmail.MaxLength = 45;
             this.txEmail.Name = "txEmail";
             this.txEmail.Size = new System.Drawing.Size(127, 20);
             this.txEmail.TabIndex = 15;
@@ -191,6 +364,7 @@ namespace CtaCteProveedores.Proveedores
             // txCelular
             // 
             this.txCelular.Location = new System.Drawing.Point(95, 204);
+            this.txCelular.MaxLength = 12;
             this.txCelular.Name = "txCelular";
             this.txCelular.Size = new System.Drawing.Size(127, 20);
             this.txCelular.TabIndex = 14;
@@ -199,6 +373,7 @@ namespace CtaCteProveedores.Proveedores
             // txTelefono
             // 
             this.txTelefono.Location = new System.Drawing.Point(95, 174);
+            this.txTelefono.MaxLength = 12;
             this.txTelefono.Name = "txTelefono";
             this.txTelefono.Size = new System.Drawing.Size(127, 20);
             this.txTelefono.TabIndex = 13;
@@ -206,6 +381,7 @@ namespace CtaCteProveedores.Proveedores
             // txDomicilio
             // 
             this.txDomicilio.Location = new System.Drawing.Point(95, 143);
+            this.txDomicilio.MaxLength = 45;
             this.txDomicilio.Name = "txDomicilio";
             this.txDomicilio.Size = new System.Drawing.Size(127, 20);
             this.txDomicilio.TabIndex = 12;
@@ -238,6 +414,8 @@ namespace CtaCteProveedores.Proveedores
             this.cbProvincia.Name = "cbProvincia";
             this.cbProvincia.Size = new System.Drawing.Size(121, 21);
             this.cbProvincia.TabIndex = 10;
+            this.cbProvincia.SelectionChangeCommitted += new System.EventHandler(this.cbProvincia_SelectionChangeCommitted);
+            this.cbProvincia.SelectedValueChanged += new System.EventHandler(this.cbProvincia_SelectedValueChanged);
             // 
             // label8
             // 
@@ -287,7 +465,7 @@ namespace CtaCteProveedores.Proveedores
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 72);
+            this.label3.Location = new System.Drawing.Point(28, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 4;
@@ -325,141 +503,101 @@ namespace CtaCteProveedores.Proveedores
             this.label1.TabIndex = 0;
             this.label1.Text = "RazonSocial";
             // 
-            // panel4
+            // button2
             // 
-            this.panel4.Controls.Add(this.dtgProveedores);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(228, 60);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(681, 326);
-            this.panel4.TabIndex = 4;
+            this.button2.BackgroundImage = global::CtaCteProveedores.Properties.Resources.back;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.ImageIndex = 6;
+            this.button2.ImageList = this.imageList1;
+            this.button2.Location = new System.Drawing.Point(377, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 60);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "CargarLogo";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txBuscar
+            // btEliminar
             // 
-            this.txBuscar.Location = new System.Drawing.Point(321, 21);
-            this.txBuscar.Name = "txBuscar";
-            this.txBuscar.Size = new System.Drawing.Size(100, 20);
-            this.txBuscar.TabIndex = 0;
+            this.btEliminar.BackgroundImage = global::CtaCteProveedores.Properties.Resources.back;
+            this.btEliminar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEliminar.ForeColor = System.Drawing.Color.White;
+            this.btEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btEliminar.ImageIndex = 2;
+            this.btEliminar.ImageList = this.imageList1;
+            this.btEliminar.Location = new System.Drawing.Point(260, 2);
+            this.btEliminar.Name = "btEliminar";
+            this.btEliminar.Size = new System.Drawing.Size(75, 60);
+            this.btEliminar.TabIndex = 9;
+            this.btEliminar.Text = "Eliminar";
+            this.btEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btEliminar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(444, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAgregar.BackgroundImage")));
+            this.btAgregar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAgregar.ForeColor = System.Drawing.Color.White;
+            this.btAgregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btAgregar.ImageIndex = 1;
+            this.btAgregar.ImageList = this.imageList1;
+            this.btAgregar.Location = new System.Drawing.Point(137, 2);
+            this.btAgregar.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.btAgregar.Name = "btAgregar";
+            this.btAgregar.Size = new System.Drawing.Size(81, 60);
+            this.btAgregar.TabIndex = 7;
+            this.btAgregar.Text = "Agregar";
+            this.btAgregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btAgregar.UseVisualStyleBackColor = true;
+            this.btAgregar.Click += new System.EventHandler(this.btAgregar_Click);
             // 
-            // lbFechaAlta
+            // btSalir
             // 
-            this.lbFechaAlta.AutoSize = true;
-            this.lbFechaAlta.Location = new System.Drawing.Point(17, 275);
-            this.lbFechaAlta.Name = "lbFechaAlta";
-            this.lbFechaAlta.Size = new System.Drawing.Size(55, 13);
-            this.lbFechaAlta.TabIndex = 17;
-            this.lbFechaAlta.Text = "FechaAlta";
+            this.btSalir.BackgroundImage = global::CtaCteProveedores.Properties.Resources.back;
+            this.btSalir.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSalir.ForeColor = System.Drawing.Color.White;
+            this.btSalir.Image = global::CtaCteProveedores.Properties.Resources.Exit;
+            this.btSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btSalir.Location = new System.Drawing.Point(824, 2);
+            this.btSalir.Name = "btSalir";
+            this.btSalir.Size = new System.Drawing.Size(75, 60);
+            this.btSalir.TabIndex = 3;
+            this.btSalir.Text = "Salir";
+            this.btSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btSalir.UseVisualStyleBackColor = true;
+            this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
             // 
-            // laRespAlta
+            // btModificar
             // 
-            this.laRespAlta.AutoSize = true;
-            this.laRespAlta.Location = new System.Drawing.Point(17, 297);
-            this.laRespAlta.Name = "laRespAlta";
-            this.laRespAlta.Size = new System.Drawing.Size(50, 13);
-            this.laRespAlta.TabIndex = 18;
-            this.laRespAlta.Text = "Res. Alta";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 13);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "N Proveedor";
-            // 
-            // laIdProveedor
-            // 
-            this.laIdProveedor.AutoSize = true;
-            this.laIdProveedor.Location = new System.Drawing.Point(97, 23);
-            this.laIdProveedor.Name = "laIdProveedor";
-            this.laIdProveedor.Size = new System.Drawing.Size(50, 13);
-            this.laIdProveedor.TabIndex = 20;
-            this.laIdProveedor.Text = "Res. Alta";
-            // 
-            // dtgProveedores
-            // 
-            this.dtgProveedores.AllowUserToAddRows = false;
-            this.dtgProveedores.AllowUserToDeleteRows = false;
-            this.dtgProveedores.AutoGenerateColumns = false;
-            this.dtgProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idproveedorDataGridViewTextBoxColumn,
-            this.razonSocial1DataGridViewTextBoxColumn,
-            this.cuitDataGridViewTextBoxColumn,
-            this.fechaAlta1DataGridViewTextBoxColumn,
-            this.telefonoDataGridViewTextBoxColumn,
-            this.celularDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn});
-            this.dtgProveedores.DataSource = this.claseProveedoresBindingSource;
-            this.dtgProveedores.Location = new System.Drawing.Point(22, 20);
-            this.dtgProveedores.Name = "dtgProveedores";
-            this.dtgProveedores.ReadOnly = true;
-            this.dtgProveedores.Size = new System.Drawing.Size(647, 290);
-            this.dtgProveedores.TabIndex = 0;
-            // 
-            // claseProveedoresBindingSource
-            // 
-            this.claseProveedoresBindingSource.DataSource = typeof(CtaCteProveedores.Proveedores.ClaseProveedores);
-            // 
-            // idproveedorDataGridViewTextBoxColumn
-            // 
-            this.idproveedorDataGridViewTextBoxColumn.DataPropertyName = "Idproveedor";
-            this.idproveedorDataGridViewTextBoxColumn.HeaderText = "Idproveedor";
-            this.idproveedorDataGridViewTextBoxColumn.Name = "idproveedorDataGridViewTextBoxColumn";
-            this.idproveedorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // razonSocial1DataGridViewTextBoxColumn
-            // 
-            this.razonSocial1DataGridViewTextBoxColumn.DataPropertyName = "RazonSocial1";
-            this.razonSocial1DataGridViewTextBoxColumn.HeaderText = "RazonSocial1";
-            this.razonSocial1DataGridViewTextBoxColumn.Name = "razonSocial1DataGridViewTextBoxColumn";
-            this.razonSocial1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cuitDataGridViewTextBoxColumn
-            // 
-            this.cuitDataGridViewTextBoxColumn.DataPropertyName = "Cuit";
-            this.cuitDataGridViewTextBoxColumn.HeaderText = "Cuit";
-            this.cuitDataGridViewTextBoxColumn.Name = "cuitDataGridViewTextBoxColumn";
-            this.cuitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaAlta1DataGridViewTextBoxColumn
-            // 
-            this.fechaAlta1DataGridViewTextBoxColumn.DataPropertyName = "FechaAlta1";
-            this.fechaAlta1DataGridViewTextBoxColumn.HeaderText = "FechaAlta1";
-            this.fechaAlta1DataGridViewTextBoxColumn.Name = "fechaAlta1DataGridViewTextBoxColumn";
-            this.fechaAlta1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telefonoDataGridViewTextBoxColumn
-            // 
-            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "Telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
-            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
-            this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // celularDataGridViewTextBoxColumn
-            // 
-            this.celularDataGridViewTextBoxColumn.DataPropertyName = "Celular";
-            this.celularDataGridViewTextBoxColumn.HeaderText = "Celular";
-            this.celularDataGridViewTextBoxColumn.Name = "celularDataGridViewTextBoxColumn";
-            this.celularDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.btModificar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btModificar.BackgroundImage")));
+            this.btModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btModificar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btModificar.ForeColor = System.Drawing.Color.White;
+            this.btModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btModificar.ImageIndex = 3;
+            this.btModificar.ImageList = this.imageList1;
+            this.btModificar.Location = new System.Drawing.Point(20, 2);
+            this.btModificar.Name = "btModificar";
+            this.btModificar.Size = new System.Drawing.Size(75, 60);
+            this.btModificar.TabIndex = 1;
+            this.btModificar.Text = "Modificar";
+            this.btModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btModificar.UseVisualStyleBackColor = true;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
             // 
             // frAbmProveedores
             // 
@@ -470,16 +608,17 @@ namespace CtaCteProveedores.Proveedores
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frAbmProveedores";
-            this.Text = "frAbmProveeores";
+            this.Text = "ADMINISTRACION DE PROVEEDORES";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.claseProveedoresBindingSource)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -507,9 +646,7 @@ namespace CtaCteProveedores.Proveedores
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.CheckBox chActivo;
         private System.Windows.Forms.TextBox txEmail;
-        private System.Windows.Forms.Button btAgregar;
         private System.Windows.Forms.Button btSalir;
-        private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txBuscar;
@@ -519,12 +656,22 @@ namespace CtaCteProveedores.Proveedores
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dtgProveedores;
         private System.Windows.Forms.BindingSource claseProveedoresBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idproveedorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn razonSocial1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaAlta1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn celularDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        
+        private System.Windows.Forms.DataGridViewTextBoxColumn NProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cuit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaAlta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.Button btAgregar;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button btEliminar;
+        private System.Windows.Forms.Panel panel6;
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CtaCteProveedores.Proveedores
+﻿namespace CtaCteProveedores.Proveedores
 {
     public class ClaseProveedores
     {
@@ -20,6 +14,25 @@ namespace CtaCteProveedores.Proveedores
         private string FechaAlta;
         private int RespAlta;
         private string activo;
+
+        public ClaseProveedores(string razonSocial, string cuit, string provincia, string localidad, string domicilio, string telefono, string celular, string email, int respAlta)
+        {
+            this.RazonSocial = razonSocial;
+            this.cuit = cuit;
+            this.provincia = provincia;
+            this.localidad = localidad;
+            this.domicilio = domicilio;
+            this.telefono = telefono;
+            this.celular = celular;
+            this.email = email;
+            this.RespAlta = respAlta;
+        }
+
+        public ClaseProveedores()
+        {
+        }
+
+
 
         public int Idproveedor { get => idproveedor; set => idproveedor = value; }
         public string RazonSocial1 { get => RazonSocial; set => RazonSocial = value; }

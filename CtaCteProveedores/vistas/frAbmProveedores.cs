@@ -1,12 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CtaCteProveedores.clases;
+using CtaCteProveedores.VistasAuxiliares;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CtaCteProveedores.Proveedores
@@ -14,10 +10,12 @@ namespace CtaCteProveedores.Proveedores
     public partial class frAbmProveedores : Form
     {
         public int GIdUsuario;
+        ClaseAuxiliar objAuxiliar = new ClaseAuxiliar();
         public frAbmProveedores()
         {
             InitializeComponent();
             cargarTabla(null);
+            cargarProvincias();
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -29,66 +27,66 @@ namespace CtaCteProveedores.Proveedores
         {
 
 
-            //int idproveedor = 0;
-            String RazonSocial,  Cuit;
-            String provincia, localidad, domicilio;
-            String telefono, celular, email,activo;
-           // int RespAlta=0;
+            String activo;
 
-            RazonSocial = txRazonSocial.Text;
-            Cuit = txCuit.Text;
-            provincia = cbProvincia.Text;
-            localidad = cbLocalidad.Text;
-            domicilio = txDomicilio.Text;
-            telefono = txTelefono.Text;
-            celular = txCelular.Text;
-            email = txEmail.Text;
             if (chActivo.Checked)
                 activo = "SI";
             else
                 activo = "NO";
 
-            string sql = "INSERT INTO proveedores ( RazonSocial, Cuit, Provincia, Localidad, " +
-                "domicilio, telefono, celular, Email, FechaAlta, RespAlta) VALUES('";
-            sql += RazonSocial + "', '" + Cuit + "', '" + provincia + "', '";
-            sql += localidad;
-            sql += "', '";
-            sql += domicilio;
-            sql += "', '";
-            sql += telefono;
-            sql += "', '";
-            sql += celular;
-            sql += "', '";
-            sql += email;
-            sql += "', CURDATE(), '";
-            sql += GIdUsuario;
-            sql += "')";
-            
-            Conexion objConexion = new Conexion();
-            
+            ClaseProveedores objProveedor = new ClaseProveedores(txRazonSocial.Text, txCuit.Text, cbProvincia.Text
+                , cbLocalidad.Text, txDomicilio.Text, txTelefono.Text, txCelular.Text, txEmail.Text, GIdUsuario);
 
-            MySqlConnection conexionBD = objConexion.conexion();
-            conexionBD.Open();
+            ctrProveedores ctrlProv = new ctrProveedores();
 
-            try
+            if (laIdProveedor.Text != "")
             {
-                MySqlCommand comando = new MySqlCommand(sql,conexionBD);
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Registro guardado");
+                objProveedor.Idproveedor = int.Parse(laIdProveedor.Text);
+                if (ctrlProv.update(objProveedor))
+                    MessageBox.Show("Registro actualizado");
             }
-            catch (MySqlException ex)
+            else
             {
-                MessageBox.Show("Registro guardado " + ex);
+                int auxint = ctrlProv.inserta(objProveedor);
+                if (auxint != 0)
+                {
+
+                    MessageBox.Show("Se Creo el Proveedor N: " + auxint);
+                    limpia();
+                    cargarTabla(null);
+                }
             }
-            finally
-            {
-                conexionBD.Close();
-            }
+
         }
 
         private void btModificar_Click(object sender, EventArgs e)
         {
+            int idProv = 0;
+            idProv = Convert.ToInt32(dtgProveedores.CurrentRow.Cells["NProveedor"].Value.ToString());
+            laIdProveedor.Text = idProv.ToString();
 
+            ClaseProveedores objProveedor = new ClaseProveedores();
+            ctrProveedores ctrProv = new ctrProveedores();
+             
+            ctrProv.DevolverDatos(ref objProveedor, idProv);
+            txRazonSocial.Text = objProveedor.RazonSocial1;
+            txCuit.Text = objProveedor.Cuit;
+            cbProvincia.Text = objProveedor.Provincia;
+            cbLocalidad.Text = objProveedor.Localidad;
+            txDomicilio.Text = objProveedor.Domicilio;
+            txTelefono.Text = objProveedor.Telefono;
+            txCelular.Text = objProveedor.Celular;
+            txEmail.Text = objProveedor.Email;
+            lbFechaAlta.Text = "Fecha Alta " + objProveedor.FechaAlta1;
+            laRespAlta.Text = "Responsable N: "+objProveedor.RespAlta1.ToString();
+            if (objProveedor.Activo == "SI")
+            {
+                chActivo.Checked = true;
+            }
+            else
+            {
+                chActivo.Checked = true;
+            }
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -104,55 +102,93 @@ namespace CtaCteProveedores.Proveedores
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*buscar en la tabla */
             string Cuit = "";
             Cuit = txBuscar.Text;
 
             ctrProveedores objprueba = new ctrProveedores();
-            objprueba.DevolverId(Cuit);
+            int axuint = objprueba.DevolverId(Cuit);
+            laIdProveedor.Text = axuint.ToString();
             return;
-            MySqlDataReader reader = null;
-
-            string sql = "SELECT idproveedor, RazonSocial, NombreFantacia, Cuit, Provincia, "+
-                "Localidad, domicilio, telefono, celular, Email, date(FechaAlta) as FechaAlta, RespAlta, Activo " +
-                " FROM proveedores WHERE Cuit LIKE '%"+Cuit+"%' LIMIT 1; ";
-            Conexion objConexion = new Conexion();
-            MySqlConnection conexionDB = objConexion.conexion();
-            conexionDB.Open();
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexionDB);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        lbFechaAlta.Text ="Fecha Alta " + reader.GetString("FechaAlta");
-                        laRespAlta.Text = reader.GetString("RespAlta");
-                        laIdProveedor.Text = reader.GetString("idproveedor");
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("error al consultar " + ex);
-            }
-            finally
-            {
-                conexionDB.Close();
-            }
-        }
+                   }
 
 
 
         private void cargarTabla(string dato)
         {
-            List <ClaseProveedores> lista = new List<ClaseProveedores>();
+           // List<ClaseProveedores> lista = new List<ClaseProveedores>();
             ctrProveedores ctrProv = new ctrProveedores();
             dtgProveedores.DataSource = ctrProv.consulta(dato);
         }
+        private void cargarProvincias()
+        {
+
+
+            cbProvincia.DataSource = null;
+            cbProvincia.Items.Clear();
+
+            cbProvincia.ValueMember = "provincia";
+            cbProvincia.DisplayMember = "provincia";
+            cbProvincia.DataSource = objAuxiliar.cargarProvincias();
+
+        }
+        private void limpia()
+        {
+            txRazonSocial.Text = "";
+            txCuit.Text = "";
+            cbProvincia.SelectedItem = 0;
+            cbLocalidad.SelectedIndex = 0;
+            txDomicilio.Text = "";
+            txTelefono.Text = "";
+            txCelular.Text = "";
+            txEmail.Text = "";
+            laIdProveedor.Text = "";
+        }
+
+        private void cbProvincia_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbProvincia_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+            cbLocalidad.DataSource = null;
+            cbLocalidad.Items.Clear();
+
+            cbLocalidad.ValueMember = "Localidad";
+            cbLocalidad.DisplayMember = "Localidad";
+
+
+
+            cbLocalidad.DataSource = objAuxiliar.cargarLocalidades(cbProvincia.SelectedValue.ToString());
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frCargarImagenes form2 = new frCargarImagenes();
+            form2.LIdInterno.Text = "3";
+            form2.ShowDialog();
+
+            int aux = 0;
+            int.TryParse(form2.LIdInterno.Text, out aux);
+            if (aux != 0)
+            {
+                //** Hay un id de imagen *///
+                MessageBox.Show("id imagen " + aux);
+            }
+
+        }
+
+        private void txBuscar_TextChanged(object sender, EventArgs e)
+        {
+            cargarTabla(txBuscar.Text);
+        }
+
     }
 
 
-    
+
 }
