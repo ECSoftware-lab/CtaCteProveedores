@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -106,6 +121,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -123,16 +139,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clases\ClaseComras.cs" />
+    <Compile Include="clases\ClaseCompras.cs" />
+    <Compile Include="clases\ClaseEgreso.cs" />
     <Compile Include="clases\ClaseProvPagos.cs" />
+    <Compile Include="clases\ClaseUsModulo.cs" />
+    <Compile Include="clases\ClaseUsPermisos.cs" />
     <Compile Include="controladores\ClaseAuxiliar.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="controladores\ctrCompras.cs" />
+    <Compile Include="controladores\ctrEgresos.cs" />
+    <Compile Include="controladores\ctrUsModulo.cs" />
     <Compile Include="frMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frMain.Designer.cs">
       <DependentUpon>frMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaz\IEgresoIngreso.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controladores\ctrProveedores.cs" />
@@ -161,29 +184,41 @@
     <Compile Include="vistas\frConsultaCtaCteProv.Designer.cs">
       <DependentUpon>frConsultaCtaCteProv.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\frCtrCompras.cs">
+    <Compile Include="vistas\Controles\PaCompras.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="vistas\frCtrCompras.Designer.cs">
-      <DependentUpon>frCtrCompras.cs</DependentUpon>
+    <Compile Include="vistas\Controles\PaCompras.Designer.cs">
+      <DependentUpon>PaCompras.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\frCtrEgresos.cs">
+    <Compile Include="vistas\Controles\PaEgresos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="vistas\frCtrEgresos.Designer.cs">
-      <DependentUpon>frCtrEgresos.cs</DependentUpon>
+    <Compile Include="vistas\Controles\PaEgresos.Designer.cs">
+      <DependentUpon>PaEgresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\frCtrIngresos.cs">
+    <Compile Include="vistas\Controles\PaIngresos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="vistas\frCtrIngresos.Designer.cs">
-      <DependentUpon>frCtrIngresos.cs</DependentUpon>
+    <Compile Include="vistas\Controles\PaIngresos.Designer.cs">
+      <DependentUpon>PaIngresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\frCtrPagosProveedor.cs">
+    <Compile Include="vistas\Controles\PaPagosProveedor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="vistas\frCtrPagosProveedor.Designer.cs">
-      <DependentUpon>frCtrPagosProveedor.cs</DependentUpon>
+    <Compile Include="vistas\Controles\PaPagosProveedor.Designer.cs">
+      <DependentUpon>PaPagosProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Controles\PaHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="vistas\Controles\PaHome.Designer.cs">
+      <DependentUpon>PaHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\frUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\frUsuarios.Designer.cs">
+      <DependentUpon>frUsuarios.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frMain.resx">
       <DependentUpon>frMain.cs</DependentUpon>
@@ -204,22 +239,30 @@
     <EmbeddedResource Include="VistasAuxiliares\frCargarImagenes.resx">
       <DependentUpon>frCargarImagenes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Controles\PaPagosProveedor.resx">
+      <DependentUpon>PaPagosProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\frAbmProveedores.resx">
       <DependentUpon>frAbmProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\frConsultaCtaCteProv.resx">
       <DependentUpon>frConsultaCtaCteProv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\frCtrCompras.resx">
-      <DependentUpon>frCtrCompras.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Controles\PaCompras.resx">
+      <DependentUpon>PaCompras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\frCtrEgresos.resx">
-      <DependentUpon>frCtrEgresos.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Controles\PaEgresos.resx">
+      <DependentUpon>PaEgresos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\frCtrIngresos.resx">
-      <DependentUpon>frCtrIngresos.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Controles\PaIngresos.resx">
+      <DependentUpon>PaIngresos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Controles\PaHome.resx">
+      <DependentUpon>PaHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CtaCteProveedores.clases.ClaseCompras.datasource" />
     <None Include="Properties\DataSources\CtaCteProveedores.Proveedores.ClaseProveedores.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -281,6 +324,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Go forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dollar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dollar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Go back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-cleanup_sindo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

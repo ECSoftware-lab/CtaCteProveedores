@@ -1,7 +1,7 @@
 ﻿
 namespace CtaCteProveedores.vistas
 {
-    partial class frCtrPagosProveedor
+    partial class PaIngresos
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -29,8 +29,17 @@ namespace CtaCteProveedores.vistas
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CtrUsIngresos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "CtrUsIngresos";
+            this.Size = new System.Drawing.Size(609, 372);
+            this.Load += new System.EventHandler(this.frCtrGeneral_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

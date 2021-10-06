@@ -46,5 +46,13 @@
         public string FechaAlta1 { get => FechaAlta; set => FechaAlta = value; }
         public int RespAlta1 { get => RespAlta; set => RespAlta = value; }
         public string Activo { get => activo; set => activo = value; }
+
+        internal clases.ClaseCompras ClaseCompras
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

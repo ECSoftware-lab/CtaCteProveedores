@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CtaCteProveedores.vistas
 {
-    public partial class frCtrEgresos : UserControl
+    public partial class frUsuarios : Form
     {
-        public frCtrEgresos()
+        public frUsuarios()
         {
             InitializeComponent();
         }

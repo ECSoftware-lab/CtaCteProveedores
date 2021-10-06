@@ -11,10 +11,18 @@ namespace CtaCteProveedores
 
         frAbmProveedores frPorv;
         frConsultaCtaCteProv frConsCtaProv;
+        frUsuarios frUsu;
 
         public frMain()
         {
             InitializeComponent();
+
+            CerrarTodosLosHijos();
+            ActivarContenedor();
+            PaHome ctrEmp = new PaHome();
+            pContenedor.Controls.Add(ctrEmp);
+            ctrEmp.Dock = DockStyle.Fill;
+
         }
 
         #region General
@@ -111,7 +119,7 @@ namespace CtaCteProveedores
         {
             CerrarTodosLosHijos();
             ActivarContenedor();
-            frCtrIngresos ctrEmp = new frCtrIngresos();            
+            PaIngresos ctrEmp = new PaIngresos();            
             pContenedor.Controls.Add(ctrEmp);
             ctrEmp.Dock = DockStyle.Fill;
         }
@@ -120,7 +128,7 @@ namespace CtaCteProveedores
         {
             CerrarTodosLosHijos();
             ActivarContenedor();
-            frCtrEgresos ctrEmp = new frCtrEgresos();
+            PaEgresos ctrEmp = new PaEgresos();
             pContenedor.Controls.Add(ctrEmp);
             ctrEmp.Dock = DockStyle.Fill;
         }
@@ -129,7 +137,7 @@ namespace CtaCteProveedores
         {
             CerrarTodosLosHijos();
             ActivarContenedor();
-            frCtrCompras ctrEmp = new frCtrCompras();
+            PaCompras ctrEmp = new PaCompras();
             pContenedor.Controls.Add(ctrEmp);
             ctrEmp.Dock = DockStyle.Fill;
         }
@@ -138,12 +146,55 @@ namespace CtaCteProveedores
         {
             CerrarTodosLosHijos();
             ActivarContenedor();
-            frCtrPagosProveedor ctrEmp = new frCtrPagosProveedor();
+            PaPagosProveedor ctrEmp = new PaPagosProveedor();
             pContenedor.Controls.Add(ctrEmp);
             ctrEmp.Dock = DockStyle.Fill;
         }
+
         #endregion
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            CerrarTodosLosHijos();
+            ActivarContenedor();
+            PaHome ctrEmp = new PaHome();
+            pContenedor.Controls.Add(ctrEmp);
+            ctrEmp.Dock = DockStyle.Fill;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            CerrarTodosLosHijos();
+            ActivarContenedor();
+            PaEgresos ctrEmp = new PaEgresos();
+            pContenedor.Controls.Add(ctrEmp);
+            ctrEmp.Dock = DockStyle.Fill;
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DesactivarContenedor();
+            if (frUsu == null)
+            {
+                frUsu = new frUsuarios();
+                frUsu.MdiParent = this;
+                frUsu.FormClosed += new FormClosedEventHandler(frUsu_FormClosed);
+                frUsu.Show();
+                frUsu.BringToFront();
+            }
+            else
+            {
+                frUsu.Activate();
+                frUsu.WindowState = FormWindowState.Maximized;
+            }
+
+        }
+
+        private void frUsu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frUsu = null;
+        }
     }
 }

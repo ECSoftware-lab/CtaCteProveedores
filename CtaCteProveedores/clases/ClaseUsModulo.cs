@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CtaCteProveedores.clases
 {
-    class ClaseComras
+    class ClaseUsModulo
     {
+        public int IdModulo { get; set; }
+        public string Modulo { get; set; }
     }
 }

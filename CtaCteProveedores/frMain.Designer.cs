@@ -41,6 +41,9 @@ namespace CtaCteProveedores
             this.informesYConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarCtaCteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.btPagos = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -52,12 +55,17 @@ namespace CtaCteProveedores
             this.button2 = new System.Windows.Forms.Button();
             this.btIngresos = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pContenedor = new System.Windows.Forms.Panel();
+            this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -65,7 +73,8 @@ namespace CtaCteProveedores
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
-            this.informesYConsultasToolStripMenuItem});
+            this.informesYConsultasToolStripMenuItem,
+            this.administracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(650, 24);
@@ -119,14 +128,14 @@ namespace CtaCteProveedores
             // 
             this.aBMProvedoresToolStripMenuItem.Image = global::CtaCteProveedores.Properties.Resources.Boss;
             this.aBMProvedoresToolStripMenuItem.Name = "aBMProvedoresToolStripMenuItem";
-            this.aBMProvedoresToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.aBMProvedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aBMProvedoresToolStripMenuItem.Text = "ABM Provedores";
             this.aBMProvedoresToolStripMenuItem.Click += new System.EventHandler(this.aBMProvedoresToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             // 
             // informesYConsultasToolStripMenuItem
@@ -146,6 +155,8 @@ namespace CtaCteProveedores
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.btPagos);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.btCompras);
@@ -157,8 +168,37 @@ namespace CtaCteProveedores
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(145, 483);
+            this.panel1.Size = new System.Drawing.Size(145, 596);
             this.panel1.TabIndex = 5;
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.Location = new System.Drawing.Point(0, 455);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(145, 59);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "Usuarios";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 415);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(145, 40);
+            this.panel6.TabIndex = 8;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(36, 13);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // btPagos
             // 
@@ -264,11 +304,26 @@ namespace CtaCteProveedores
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(40, 10, 40, 10);
             this.panel3.Size = new System.Drawing.Size(145, 59);
             this.panel3.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::CtaCteProveedores.Properties.Resources.Home;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(40, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 39);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pContenedor
             // 
@@ -277,13 +332,28 @@ namespace CtaCteProveedores
             this.pContenedor.Size = new System.Drawing.Size(306, 191);
             this.pContenedor.TabIndex = 7;
             // 
+            // administracionToolStripMenuItem
+            // 
+            this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usuariosToolStripMenuItem});
+            this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
+            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.administracionToolStripMenuItem.Text = "Administracion";
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
             // frMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CtaCteProveedores.Properties.Resources.cuentas_corrientes_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(650, 507);
+            this.ClientSize = new System.Drawing.Size(650, 620);
             this.Controls.Add(this.pContenedor);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -296,9 +366,11 @@ namespace CtaCteProveedores
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,11 +396,17 @@ namespace CtaCteProveedores
         private System.Windows.Forms.Panel pContenedor;
         private System.Windows.Forms.Button btEgresos;
         private System.Windows.Forms.Button btPagos;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btCompras;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
     }
 }
 

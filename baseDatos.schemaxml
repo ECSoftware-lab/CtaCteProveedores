@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8mb4" collation="utf8mb4_0900_ai_ci">ctacteproveedores</database>
+</source>
+<canvas zoom="90">
+<tables>
+<table name="caja" view="colnames">
+<left>0</left>
+<top>0</top>
+<width>131</width>
+<height>275</height>
+<sql_create_table>CREATE TABLE `caja` (
+  `IdCaja` int NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `FechaFin` date DEFAULT NULL,
+  `HoraInic` time NOT NULL,
+  `HoraFin` time NOT NULL DEFAULT '00:00:00',
+  `SaldoAnterior` double(13,2) DEFAULT NULL,
+  `EfectivoInicio` double(13,2) NOT NULL DEFAULT '0.00',
+  `Ingresos` double(13,2) NOT NULL DEFAULT '0.00',
+  `Egresos` double(13,2) NOT NULL DEFAULT '0.00',
+  `IdUsuario` int unsigned NOT NULL DEFAULT '0',
+  `EfectivoFin` double(13,2) NOT NULL DEFAULT '0.00',
+  `DescargoEfectivo` double(13,2) NOT NULL DEFAULT '0.00',
+  `Saldo` double(13,2) NOT NULL DEFAULT '0.00',
+  `Estado` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'CREADA',
+  `unico` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `dumy` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`IdCaja`),
+  KEY `IDXFecha` (`Fecha`),
+  KEY `FKUsuarioCaja` (`IdUsuario`),
+  CONSTRAINT `FKUsuarioCaja` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=686 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="cajadetalle" view="colnames">
+<left>170</left>
+<top>3</top>
+<width>189</width>
+<height>270</height>
+<sql_create_table>CREATE TABLE `cajadetalle` (
+  `IdCajaDetalle` int NOT NULL AUTO_INCREMENT,
+  `IdCaja` int NOT NULL DEFAULT '0',
+  `Ingreso` double(13,2) NOT NULL DEFAULT '0.00',
+  `Egreso` double(13,2) NOT NULL,
+  `Categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `Descripcion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `IdTransaccion` int NOT NULL DEFAULT '0',
+  `Tabla` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `Fecha` date NOT NULL,
+  `Hora` time NOT NULL,
+  `Unico` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `Modificable` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'SI',
+  `Lugar` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
+  `dumy` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`IdCajaDetalle`),
+  KEY `FK_CAJADETALLE` (`IdCaja`),
+  CONSTRAINT `FK_CAJADETALLE` FOREIGN KEY (`IdCaja`) REFERENCES `caja` (`IdCaja`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=78687 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="categorias" view="colnames">
+<left>296</left>
+<top>462</top>
+<width>99</width>
+<height>108</height>
+<sql_create_table>CREATE TABLE `categorias` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `Categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tipo` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `IDXCatego` (`Categoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="clientes" view="colnames">
+<left>1548</left>
+<top>413</top>
+<width>279</width>
+<height>270</height>
+<sql_create_table>CREATE TABLE `clientes` (
+  `idclientes` int unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `apellido` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Cuit` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Provincia` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Localidad` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `domicilio` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `telefono` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `celular` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '-',
+  `FechaAlta` date NOT NULL,
+  `RespAlta` int NOT NULL,
+  `OBS` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '-',
+  `Baja` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'NO',
+  `FechaMod` date DEFAULT NULL,
+  `RespMod` int unsigned DEFAULT '0',
+  `CodPostal` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `LugarAlta` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `Piso` varchar(3) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `Depto` varchar(3) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `IdUsuarioWeb` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idclientes`),
+  UNIQUE KEY `IDXCuit` (`Cuit`)
+) ENGINE=InnoDB AUTO_INCREMENT=35521 DEFAULT CHARSET=utf8mb3</sql_create_table>
+</table>
+<table name="egresos" view="colnames">
+<left>395</left>
+<top>8</top>
+<width>225</width>
+<height>171</height>
+<sql_create_table>CREATE TABLE `egresos` (
+  `IdEgresos` int unsigned NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `Categoria` varchar(45) NOT NULL,
+  `SubCategoria` varchar(45) NOT NULL,
+  `Descripcion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Cuenta` varchar(15) NOT NULL,
+  `Total` double(13,2) NOT NULL,
+  `IdUsuario` int unsigned NOT NULL,
+  PRIMARY KEY (`IdEgresos`),
+  KEY `FKUsuarioEgreso` (`IdUsuario`),
+  KEY `FKEgresoCatego` (`Categoria`),
+  KEY `FKEgresoSubCatego` (`SubCategoria`),
+  CONSTRAINT `FKEgresoCatego` FOREIGN KEY (`Categoria`) REFERENCES `categorias` (`Categoria`) ON UPDATE CASCADE,
+  CONSTRAINT `FKEgresoSubCatego` FOREIGN KEY (`SubCategoria`) REFERENCES `subcategorias` (`Subcategoria`) ON UPDATE CASCADE,
+  CONSTRAINT `FKUsuarioEgreso` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="imagenes" view="colnames">
+<left>26</left>
+<top>649</top>
+<width>234</width>
+<height>126</height>
+<sql_create_table>CREATE TABLE `imagenes` (
+  `Id` int unsigned NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(45) NOT NULL,
+  `Nombre` varchar(45) NOT NULL,
+  `Imgagen` longblob,
+  PRIMARY KEY (`Id`),
+  KEY `IdxUnicoImgen` (`Tipo`,`Nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="ingresos" view="colnames">
+<left>404</left>
+<top>190</top>
+<width>225</width>
+<height>171</height>
+<sql_create_table>CREATE TABLE `ingresos` (
+  `IdIngresos` int unsigned NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `Categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `SubCategoria` varchar(45) NOT NULL,
+  `Descripcion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Cuenta` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Total` double(13,2) NOT NULL,
+  `IdUsuario` int unsigned NOT NULL,
+  PRIMARY KEY (`IdIngresos`),
+  KEY `FKUsuarioIngresos` (`IdUsuario`),
+  KEY `FKIngresoCatego` (`Categoria`),
+  KEY `FKIngresoSubCatego` (`SubCategoria`),
+  CONSTRAINT `FKIngresoCatego` FOREIGN KEY (`Categoria`) REFERENCES `categorias` (`Categoria`) ON UPDATE CASCADE,
+  CONSTRAINT `FKIngresoSubCatego` FOREIGN KEY (`SubCategoria`) REFERENCES `subcategorias` (`Subcategoria`) ON UPDATE CASCADE,
+  CONSTRAINT `FKUsuarioIngresos` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="proveedores" view="colnames">
+<left>827</left>
+<top>140</top>
+<width>153</width>
+<height>261</height>
+<sql_create_table>CREATE TABLE `proveedores` (
+  `idproveedor` int unsigned NOT NULL AUTO_INCREMENT,
+  `RazonSocial` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `NombreFantacia` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '',
+  `Cuit` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Provincia` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Localidad` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '''-''',
+  `domicilio` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `celular` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `FechaAlta` date NOT NULL,
+  `RespAlta` int NOT NULL,
+  `Activo` varchar(2) NOT NULL DEFAULT 'SI',
+  PRIMARY KEY (`idproveedor`),
+  UNIQUE KEY `IDXCuit` (`Cuit`),
+  UNIQUE KEY `IDXApeNom` (`NombreFantacia`,`RazonSocial`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="proveedorescompras" view="colnames">
+<left>1108</left>
+<top>300</top>
+<width>162</width>
+<height>216</height>
+<sql_create_table>CREATE TABLE `proveedorescompras` (
+  `IdproveedoresCompras` int NOT NULL AUTO_INCREMENT,
+  `Fecha` date DEFAULT NULL,
+  `FechaIng` date DEFAULT NULL,
+  `idProveedor` int unsigned NOT NULL DEFAULT '1',
+  `Estado` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'CREADA',
+  `Tipo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
+  `Total` double(13,2) NOT NULL DEFAULT '0.00',
+  `Acuenta` double(13,2) NOT NULL DEFAULT '0.00',
+  `Saldo` double(13,2) NOT NULL DEFAULT '0.00',
+  `Numero` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
+  `Iva` double(13,2) NOT NULL DEFAULT '0.00',
+  `IngBruto` double(13,2) NOT NULL DEFAULT '0.00',
+  `ImpuInterno` double(13,2) NOT NULL DEFAULT '0.00',
+  `idUsuario` int unsigned NOT NULL,
+  PRIMARY KEY (`IdproveedoresCompras`),
+  KEY `FKProvCompra` (`idProveedor`),
+  KEY `FKCompUsuario` (`idUsuario`),
+  CONSTRAINT `FKCompUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE,
+  CONSTRAINT `FKProvCompra` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`idproveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="proveedorescompraspagos" view="colnames">
+<left>763</left>
+<top>500</top>
+<width>198</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `proveedorescompraspagos` (
+  `ProveedoresComprasPagos` int unsigned NOT NULL AUTO_INCREMENT,
+  `IdProveedores` int NOT NULL,
+  `IdproveedoresCompras` int NOT NULL,
+  `IdProveedoresPagos` int unsigned NOT NULL,
+  `Acuenta` double(13,2) NOT NULL,
+  `Fecha` date NOT NULL,
+  `IdUsuario` int NOT NULL,
+  `Tipo` varchar(15) NOT NULL DEFAULT '-',
+  PRIMARY KEY (`ProveedoresComprasPagos`),
+  KEY `FKIdProvComp` (`IdproveedoresCompras`),
+  KEY `FKIdProvPag` (`IdProveedoresPagos`),
+  CONSTRAINT `FKIdProvComp` FOREIGN KEY (`IdproveedoresCompras`) REFERENCES `proveedorescompras` (`IdproveedoresCompras`),
+  CONSTRAINT `FKIdProvPag` FOREIGN KEY (`IdProveedoresPagos`) REFERENCES `proveedorespagos` (`IdProveedoresPagos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="proveedoresctacte" view="colnames">
+<left>1031</left>
+<top>539</top>
+<width>198</width>
+<height>261</height>
+<sql_create_table>CREATE TABLE `proveedoresctacte` (
+  `IdProveedoresCtaCte` int NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `FechaIng` date NOT NULL,
+  `idProveedor` int unsigned NOT NULL,
+  `IdProveeorCompras` int unsigned NOT NULL,
+  `IdPagoProveedor` int unsigned NOT NULL,
+  `Debe` decimal(13,2) NOT NULL DEFAULT '0.00',
+  `Haber` decimal(13,2) NOT NULL DEFAULT '0.00',
+  `IdUsuario` int unsigned NOT NULL,
+  `Tipo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `unico` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `NFactura` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `Descripcion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'COMPRA' COMMENT 'compra devolucion pago',
+  PRIMARY KEY (`IdProveedoresCtaCte`),
+  KEY `IDxProvCta` (`idProveedor`),
+  CONSTRAINT `FKProvCta` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`idproveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="proveedorespagos" view="colnames">
+<left>1105</left>
+<top>14</top>
+<width>171</width>
+<height>234</height>
+<sql_create_table>CREATE TABLE `proveedorespagos` (
+  `IdProveedoresPagos` int unsigned NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `IdProveedor` int unsigned NOT NULL,
+  `Total` double(13,2) NOT NULL DEFAULT '0.00',
+  `Usado` double(13,2) DEFAULT '0.00',
+  `Saldo` double(13,2) DEFAULT '0.00',
+  `Tipo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'PAGO EF',
+  `idUsuario` int unsigned NOT NULL,
+  `Unico` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `Descripcion` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `IdCaja` int unsigned NOT NULL,
+  PRIMARY KEY (`IdProveedoresPagos`),
+  KEY `FKProvPago` (`IdProveedor`),
+  KEY `FKProvPagUsuarios` (`idUsuario`),
+  CONSTRAINT `FKProvPago` FOREIGN KEY (`IdProveedor`) REFERENCES `proveedores` (`idproveedor`),
+  CONSTRAINT `FKProvPagUsuarios` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="provincia" view="colnames">
+<left>1457</left>
+<top>53</top>
+<width>162</width>
+<height>126</height>
+<sql_create_table>CREATE TABLE `provincia` (
+  `idprovincia` int unsigned NOT NULL AUTO_INCREMENT,
+  `provincia` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`idprovincia`),
+  UNIQUE KEY `IdxProv` (`provincia`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='en uso'</sql_create_table>
+</table>
+<table name="provincia_localidad" view="colnames">
+<left>1421</left>
+<top>235</top>
+<width>216</width>
+<height>126</height>
+<sql_create_table>CREATE TABLE `provincia_localidad` (
+  `idprov_localidad` int unsigned NOT NULL AUTO_INCREMENT,
+  `Localidad` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  `idprovincia` int unsigned NOT NULL DEFAULT '0',
+  `COD` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '-',
+  PRIMARY KEY (`idprov_localidad`),
+  KEY `FK_LocProv` (`idprovincia`),
+  KEY `Localidad` (`Localidad`),
+  CONSTRAINT `FK_LocProv` FOREIGN KEY (`idprovincia`) REFERENCES `provincia` (`idprovincia`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=45737 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='en uso'</sql_create_table>
+</table>
+<table name="us_modulos" view="standard">
+<left>170</left>
+<top>458</top>
+<width>88</width>
+<height>96</height>
+<sql_create_table>CREATE TABLE `us_modulos` (
+  `IdModulo` int unsigned NOT NULL AUTO_INCREMENT,
+  `Modulo` varchar(50) NOT NULL,
+  PRIMARY KEY (`IdModulo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="us_permisos" view="standard">
+<left>21</left>
+<top>300</top>
+<width>94</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `us_permisos` (
+  `IdPremiso` int unsigned NOT NULL AUTO_INCREMENT,
+  `IdModulo` int unsigned NOT NULL,
+  `IdUsuario` int unsigned NOT NULL,
+  PRIMARY KEY (`IdPremiso`),
+  KEY `FKPermisoModulo` (`IdModulo`),
+  KEY `FKUsuarioPermiso` (`IdUsuario`),
+  CONSTRAINT `FKPermisoModulo` FOREIGN KEY (`IdModulo`) REFERENCES `us_modulos` (`IdModulo`) ON UPDATE CASCADE,
+  CONSTRAINT `FKUsuarioPermiso` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="usuarios" view="standard">
+<left>174</left>
+<top>309</top>
+<width>122</width>
+<height>142</height>
+<sql_create_table>CREATE TABLE `usuarios` (
+  `IdUsuario` int unsigned NOT NULL AUTO_INCREMENT,
+  `NombreApellido` varchar(100) NOT NULL,
+  `Loguin` varchar(50) DEFAULT NULL,
+  `icono` longblob,
+  `Estado` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`IdUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+<table name="subcategorias" view="colnames">
+<left>512</left>
+<top>444</top>
+<width>109</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `subcategorias` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `Subcategoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tipo` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `IDXSubCatego` (`Subcategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

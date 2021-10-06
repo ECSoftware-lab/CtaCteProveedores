@@ -108,7 +108,7 @@ namespace CtaCteProveedores.Proveedores
         {
             string salida = "";
             MySqlDataReader redear;
-            
+
             sqlcons = "SELECT RazonSocial FROM proveedores WHERE idproveedor='" + _Id + "'  LIMIT 1; ";
 
             MySqlConnection conexionBD = base.conexion();
@@ -147,7 +147,7 @@ namespace CtaCteProveedores.Proveedores
         public int inserta(ClaseProveedores prov)
         {
             int salida = 0;
-           
+
             try
             {
                 MySqlConnection conexionBD = base.conexion();
@@ -159,7 +159,7 @@ namespace CtaCteProveedores.Proveedores
 
                 comando.Parameters.AddWithValue("@_Cuit", prov.Cuit);
                 comando.Parameters["@_Cuit"].Direction = System.Data.ParameterDirection.Input;
-                
+
                 comando.Parameters.AddWithValue("@_Provincia", prov.Provincia);
                 comando.Parameters["@_Provincia"].Direction = System.Data.ParameterDirection.Input;
 
@@ -167,17 +167,17 @@ namespace CtaCteProveedores.Proveedores
                 comando.Parameters["@_Localidad"].Direction = System.Data.ParameterDirection.Input;
 
                 comando.Parameters.AddWithValue("@_Domicilio", prov.Domicilio);
-                comando.Parameters["@_Domicilio"].Direction = System.Data.ParameterDirection.Input; 
-                
+                comando.Parameters["@_Domicilio"].Direction = System.Data.ParameterDirection.Input;
+
                 comando.Parameters.AddWithValue("@_Telefono", prov.Telefono);
-                comando.Parameters["@_Telefono"].Direction = System.Data.ParameterDirection.Input; 
-                
+                comando.Parameters["@_Telefono"].Direction = System.Data.ParameterDirection.Input;
+
                 comando.Parameters.AddWithValue("@_Celular", prov.Celular);
-                comando.Parameters["@_Celular"].Direction = System.Data.ParameterDirection.Input; 
-                
+                comando.Parameters["@_Celular"].Direction = System.Data.ParameterDirection.Input;
+
                 comando.Parameters.AddWithValue("@_Email", prov.Email);
-                comando.Parameters["@_Email"].Direction = System.Data.ParameterDirection.Input; 
-                
+                comando.Parameters["@_Email"].Direction = System.Data.ParameterDirection.Input;
+
                 comando.Parameters.AddWithValue("@_RespAlta", prov.RespAlta1);
                 comando.Parameters["@_RespAlta"].Direction = System.Data.ParameterDirection.Input;
 
@@ -252,7 +252,7 @@ namespace CtaCteProveedores.Proveedores
             return salida;
         }
 
-        public int DevolverDatos(ref ClaseProveedores prov,int idProveedor)
+        public int DevolverDatos(ref ClaseProveedores prov, int idProveedor)
         {
             MySqlDataReader redear;
             int salida = 0;
@@ -260,8 +260,8 @@ namespace CtaCteProveedores.Proveedores
 
             consulta = "SELECT idproveedor, RazonSocial, NombreFantacia, Cuit, Provincia, Localidad, ";
             consulta += " domicilio, telefono, celular, Email, date(FechaAlta) as FechaAlta , RespAlta, Activo ";
-            consulta += " FROM proveedores WHERE idproveedor = '"+idProveedor+"'  Limit 1";
-            
+            consulta += " FROM proveedores WHERE idproveedor = '" + idProveedor + "'  Limit 1";
+
             try
             {
                 MySqlConnection conexionBD = base.conexion();
@@ -286,14 +286,14 @@ namespace CtaCteProveedores.Proveedores
                     prov.Activo = redear.GetString("Activo");
 
                 }
-                
+
             }
             catch (MySqlException ex)
             {
                 salida = 0;
                 Console.WriteLine(ex.Message.ToString());
             }
-            
+
 
             return salida;
         }

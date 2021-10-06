@@ -13,7 +13,7 @@ namespace CtaCteProveedores
             string password = "maxima0606";
 
             string cadenaConexion = "server=" + servidor + "; port=" + puerto + "; userid=" + usuario + "; password=" + password + "; database=ctacteproveedores;";
-
+            Console.WriteLine(cadenaConexion);
             try
             {
                 MySqlConnection conexionDB = new MySqlConnection(cadenaConexion);

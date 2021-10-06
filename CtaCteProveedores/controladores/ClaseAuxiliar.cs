@@ -74,5 +74,8 @@ namespace CtaCteProveedores.clases
 
             return dt;
         }
+    
+    
+        
     }
 }
