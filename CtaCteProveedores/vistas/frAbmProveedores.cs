@@ -3,6 +3,7 @@ using CtaCteProveedores.VistasAuxiliares;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CtaCteProveedores.Proveedores
@@ -23,7 +24,7 @@ namespace CtaCteProveedores.Proveedores
 
         }
 
-        private void btAgregar_Click(object sender, EventArgs e)
+        private async void btAgregar_Click(object sender, EventArgs e)
         {
 
 
@@ -118,7 +119,7 @@ namespace CtaCteProveedores.Proveedores
         {
            // List<ClaseProveedores> lista = new List<ClaseProveedores>();
             ctrProveedores ctrProv = new ctrProveedores();
-            dtgProveedores.DataSource = ctrProv.consulta(dato);
+            dtgProveedores.DataSource =  ctrProv.consulta(dato);
         }
         private void cargarProvincias()
         {

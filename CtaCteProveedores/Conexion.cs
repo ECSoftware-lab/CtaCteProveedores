@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace CtaCteProveedores
 {
@@ -7,7 +9,7 @@ namespace CtaCteProveedores
     {
         public MySqlConnection conexion()
         {
-            string servidor = "localhost";
+            string servidor = "192.168.100.14";
             string puerto = "3308";
             string usuario = "root";
             string password = "maxima0606";
@@ -26,5 +28,8 @@ namespace CtaCteProveedores
             }
 
         }
+
     }
+
+
 }

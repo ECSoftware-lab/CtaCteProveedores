@@ -23,10 +23,12 @@ namespace CtaCteProveedores.VistasAuxiliares
         private void cargarTabla(string dato)
         {
             // List<ClaseProveedores> lista = new List<ClaseProveedores>();
+            picLoading.Visible = true;
             if (LTabla.Text == "PROVEEDORES") { 
                  ctrProveedores ctrProv = new ctrProveedores();
-                dtGridBusqueda.DataSource = ctrProv.consulta(dato);
+                dtGridBusqueda.DataSource =  ctrProv.consulta(dato);
             }
+            
         }
 
 
@@ -46,7 +48,9 @@ namespace CtaCteProveedores.VistasAuxiliares
 
         private void txBuscar_TextChanged(object sender, EventArgs e)
         {
+            
             cargarTabla(txBuscar.Text);
+            picLoading.Visible = true;
         }
     }
 }

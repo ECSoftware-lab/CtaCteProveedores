@@ -8,14 +8,19 @@ using System.Threading.Tasks;
 
 namespace CtaCteProveedores.controladores
 {
-    class ctrUsModulo : Conexion
+    class ctrSubCategorias : Conexion
     {
-
-        public void mostrar_Modulos(ref DataTable dt)
+        public void listar(ref DataTable dt,int idCategoria)
         {
 
-            string consulta = "SELECT IdModulo, Modulo FROM us_modulos ORDER BY Modulo";
-            
+            string consulta = "SELECT id, Subcategoria, tipo, idCategoria FROM subcategorias ";
+            if (idCategoria != 0) { 
+               consulta+=" WHERE idCategoria = '";
+                consulta += idCategoria;
+                consulta += "' ";
+            }
+            consulta +=" ORDER BY Subcategoria ";
+
             MySqlConnection conexionBD = base.conexion();
             try
             {
@@ -32,6 +37,5 @@ namespace CtaCteProveedores.controladores
             { conexionBD.Close(); }
 
         }
-
     }
 }

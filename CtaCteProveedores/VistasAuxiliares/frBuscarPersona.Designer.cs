@@ -31,39 +31,39 @@ namespace CtaCteProveedores.VistasAuxiliares
         {
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.txBuscar = new System.Windows.Forms.TextBox();
+            this.dtGridBusqueda = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.LRespuesta = new System.Windows.Forms.Label();
             this.LTabla = new System.Windows.Forms.Label();
             this.btAceptar = new System.Windows.Forms.Button();
             this.btSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picLoading = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txBuscar = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtGridBusqueda = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridBusqueda)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip1
             // 
             this.toolTip1.ToolTipTitle = "sugerencia";
             // 
-            // txBuscar
+            // dtGridBusqueda
             // 
-            this.txBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txBuscar.Location = new System.Drawing.Point(0, 0);
-            this.txBuscar.Name = "txBuscar";
-            this.txBuscar.Size = new System.Drawing.Size(232, 19);
-            this.txBuscar.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.txBuscar, "Si esta buscando una persoan: \r\n   Proveedor, Empleado, Cliente: \r\n   puede busca" +
-        "r por DNI,CUIT, Nombre,RazonSoc, Apellido");
-            this.txBuscar.TextChanged += new System.EventHandler(this.txBuscar_TextChanged);
+            this.dtGridBusqueda.AllowUserToAddRows = false;
+            this.dtGridBusqueda.AllowUserToDeleteRows = false;
+            this.dtGridBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridBusqueda.Location = new System.Drawing.Point(49, 84);
+            this.dtGridBusqueda.Name = "dtGridBusqueda";
+            this.dtGridBusqueda.ReadOnly = true;
+            this.dtGridBusqueda.Size = new System.Drawing.Size(240, 150);
+            this.dtGridBusqueda.TabIndex = 2;
             // 
             // panel4
             // 
@@ -137,6 +137,7 @@ namespace CtaCteProveedores.VistasAuxiliares
             // 
             this.panel1.BackgroundImage = global::CtaCteProveedores.Properties.Resources.back;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.picLoading);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,6 +145,17 @@ namespace CtaCteProveedores.VistasAuxiliares
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 54);
             this.panel1.TabIndex = 0;
+            // 
+            // picLoading
+            // 
+            this.picLoading.Image = global::CtaCteProveedores.Properties.Resources.Loading;
+            this.picLoading.Location = new System.Drawing.Point(399, 5);
+            this.picLoading.Name = "picLoading";
+            this.picLoading.Size = new System.Drawing.Size(57, 48);
+            this.picLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLoading.TabIndex = 4;
+            this.picLoading.TabStop = false;
+            this.picLoading.Visible = false;
             // 
             // panel2
             // 
@@ -153,6 +165,19 @@ namespace CtaCteProveedores.VistasAuxiliares
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(232, 23);
             this.panel2.TabIndex = 3;
+            // 
+            // txBuscar
+            // 
+            this.txBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBuscar.Location = new System.Drawing.Point(0, 0);
+            this.txBuscar.Name = "txBuscar";
+            this.txBuscar.Size = new System.Drawing.Size(232, 19);
+            this.txBuscar.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txBuscar, "Si esta buscando una persoan: \r\n   Proveedor, Empleado, Cliente: \r\n   puede busca" +
+        "r por DNI,CUIT, Nombre,RazonSoc, Apellido");
+            this.txBuscar.TextChanged += new System.EventHandler(this.txBuscar_TextChanged);
             // 
             // panel3
             // 
@@ -176,17 +201,6 @@ namespace CtaCteProveedores.VistasAuxiliares
             this.label2.TabIndex = 1;
             this.label2.Text = "Buscar";
             // 
-            // dtGridBusqueda
-            // 
-            this.dtGridBusqueda.AllowUserToAddRows = false;
-            this.dtGridBusqueda.AllowUserToDeleteRows = false;
-            this.dtGridBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridBusqueda.Location = new System.Drawing.Point(49, 84);
-            this.dtGridBusqueda.Name = "dtGridBusqueda";
-            this.dtGridBusqueda.ReadOnly = true;
-            this.dtGridBusqueda.Size = new System.Drawing.Size(240, 150);
-            this.dtGridBusqueda.TabIndex = 2;
-            // 
             // frBuscarPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,13 +211,14 @@ namespace CtaCteProveedores.VistasAuxiliares
             this.Controls.Add(this.panel1);
             this.Name = "frBuscarPersona";
             this.Text = "frBuscarPersona";
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridBusqueda)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoading)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridBusqueda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -222,5 +237,6 @@ namespace CtaCteProveedores.VistasAuxiliares
         public System.Windows.Forms.Label LRespuesta;
         public System.Windows.Forms.Label LTabla;
         private System.Windows.Forms.DataGridView dtGridBusqueda;
+        private System.Windows.Forms.PictureBox picLoading;
     }
 }

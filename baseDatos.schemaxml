@@ -360,8 +360,11 @@
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `Subcategoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `tipo` varchar(2) DEFAULT NULL,
+  `idCategoria` int unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `IDXSubCatego` (`Subcategoria`)
+  UNIQUE KEY `IDXSubCatego` (`Subcategoria`),
+  KEY `FKCategSubCatego` (`idCategoria`),
+  CONSTRAINT `FKCategSubCatego` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</sql_create_table>
 </table>
 </tables>

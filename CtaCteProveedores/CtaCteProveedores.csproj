@@ -139,15 +139,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\ClaseCategorias.cs" />
     <Compile Include="clases\ClaseCompras.cs" />
     <Compile Include="clases\ClaseEgreso.cs" />
+    <Compile Include="clases\ClaseMarcas.cs" />
     <Compile Include="clases\ClaseProvPagos.cs" />
     <Compile Include="clases\ClaseUsModulo.cs" />
     <Compile Include="clases\ClaseUsPermisos.cs" />
+    <Compile Include="clases\ClaseSubCategorias.cs" />
+    <Compile Include="ConexionSql.cs" />
     <Compile Include="controladores\ClaseAuxiliar.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="controladores\ctrCategorias.cs" />
     <Compile Include="controladores\ctrCompras.cs" />
     <Compile Include="controladores\ctrEgresos.cs" />
+    <Compile Include="controladores\ctrMarcasUpload.cs" />
+    <Compile Include="controladores\ctrSubCategorias.cs" />
     <Compile Include="controladores\ctrUsModulo.cs" />
     <Compile Include="frMain.cs">
       <SubType>Form</SubType>
@@ -159,6 +166,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controladores\ctrProveedores.cs" />
+    <Compile Include="VistasAuxiliares\frAbmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistasAuxiliares\frAbmCategoria.Designer.cs">
+      <DependentUpon>frAbmCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistasAuxiliares\frBuscarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +246,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VistasAuxiliares\frAbmCategoria.resx">
+      <DependentUpon>frAbmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistasAuxiliares\frBuscarPersona.resx">
       <DependentUpon>frBuscarPersona.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,6 +367,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
